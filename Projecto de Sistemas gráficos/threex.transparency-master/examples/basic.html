@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<script src="vendor/three.js/build/three.min.js"></script>
+<script src="vendor/three.js/examples/js/controls/OrbitControls.js"></script>
+<script src="../threex.transparency.js"></script>
+<body style='margin: 0px; overflow: hidden;'><script>
+	var renderer	= new THREE.WebGLRenderer();
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	renderer.setClearColor( 0xbbbbbb );
+	document.body.appendChild( renderer.domElement );
+
+	var updateFcts	= [];
+	var scene	= new THREE.Scene();
+	var camera	= new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10 );
+	camera.position.z = 3;
+	
+	var controls	= new THREE.OrbitControls(camera)
+	updateFcts.push(function(){
+		controls.update()
+	})
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		build the texture						//
+	//////////////////////////////////////////////////////////////////////////////////
+
+	var url = 'images/dices-transparent.png'
+	// var url = 'images/glass-sphere-with-transparency_153267809.jpg'
+	// var url = 'images/mercury-transparent.png'
+	var texture = THREE.ImageUtils.loadTexture(url)
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		add random Planes						//
+	//////////////////////////////////////////////////////////////////////////////////
+
+	var planes	= [];
+
+	var geometry	= new THREE.PlaneBufferGeometry(1,1)
+	var material	= new THREE.MeshBasicMaterial()
+	material.map	= texture
+	material.side	= THREE.DoubleSide
+
+	for(var i = 0; i < 10; i++){
+		var mesh	= new THREE.Mesh(geometry, material);
+		mesh.lookAt(new THREE.Vector3(0,1,0))
+		mesh.position.x = 0.1*i
+		mesh.position.y = 0.1*i
+		scene.add(mesh)	
+		planes.push(mesh)		
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		Use THREEx.Transparency						//
+	//////////////////////////////////////////////////////////////////////////////////
+
+	THREEx.Transparency.init(planes)
+	updateFcts.push(function(delta, now){
+		THREEx.Transparency.update(planes, camera)
+	})
+
+	// //////////////////////////////////////////////////////////////////////////////////
+	// //		add an cube and make it move					//
+	// //////////////////////////////////////////////////////////////////////////////////
+	// var geometry	= new THREE.BoxGeometry( 1, 1, 1);
+	// var material	= new THREE.MeshNormalMaterial();
+	// var cube	= new THREE.Mesh( geometry, material );
+	// scene.add( cube );
+	// updateFcts.push(function(delta, now){
+	// 	cube.rotation.x += 1 * delta;
+	// 	cube.rotation.y += 0.01;
+	// })
+	// 
+	// //////////////////////////////////////////////////////////////////////////////////
+	// //		add an sphere and make it move					//
+	// //////////////////////////////////////////////////////////////////////////////////
+	// var geometry	= new THREE.SphereGeometry( 0.5 );
+	// var material	= new THREE.MeshNormalMaterial();
+	// var sphere	= new THREE.Mesh( geometry, material );
+	// scene.add( sphere );
+	// updateFcts.push(function(delta, now){
+	// 	var angle	= 0.2 * now * Math.PI * 2
+	// 	sphere.position.x	= Math.cos(angle)*3.5
+	// 	sphere.position.z	= Math.sin(angle)*3.5
+	// })
+	
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		render the scene						//
+	//////////////////////////////////////////////////////////////////////////////////
+	updateFcts.push(function(){
+		renderer.render( scene, camera );
+	})
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		loop runner							//
+	//////////////////////////////////////////////////////////////////////////////////
+	var lastTimeMsec= null
+	requestAnimationFrame(function animate(nowMsec){
+		// keep looping
+		requestAnimationFrame( animate );
+		// measure time
+		lastTimeMsec	= lastTimeMsec || nowMsec-1000/60
+		var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
+		lastTimeMsec	= nowMsec
+		// call each update function
+		updateFcts.forEach(function(updateFn){
+			updateFn(deltaMsec/1000, nowMsec/1000)
+		})
+	})
+</script></body>

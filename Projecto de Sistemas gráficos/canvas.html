@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Space Shooter</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/game.css">
+
+    <!--Scripts-->
+    <script src='threex.laser-master/threex.laserbeam.js'></script>
+    <script src='threex.laser-master/threex.lasercooked.js'></script>
+    <script type="text/javascript" src="./libs/three.min.js"></script>
+    <script type="text/javascript" src="./libs/OrbitControls.js"></script>
+    <script type="text/javascript" src="./libs/MTLLoader.js"></script>
+    <script type="text/javascript" src="./libs/OBJLoader.js"></script>
+    <script type="text/javascript" src="scripts/Controls.js"></script>
+    <script type="text/javascript" src="scripts/Enviroment.js"></script>
+    <script type="text/javascript" src="scripts/GameController.js"></script>
+    <script type="text/javascript" src="scripts/Hazards.js"></script>
+    <script type="text/javascript" src="scripts/ship.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+
+
+</head>
+
+<body>
+
+
+    <div class="game-holder">
+        <div class="header" id="header">
+            <h2 id="pontos" style="color: white">Pontos: 0</h2>
+        </div>
+
+        <div class="footer" id="footer">
+
+            <label for="energia" style="color: white">Energia do Lazer</label>
+            <br>
+            <img id="energia" src="img/10.png" alt="">
+        </div>
+        <div id="GameOver" align="center" >
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <h1 class="gameovertext" id="gameovertext" style="color: red" align="center">Game Over</h1>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">
+                            <h3 id="best" style="color: white" align="center">beste</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">
+                            <h3 id="corrente" style="color: white" align="center">beste</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row" align="center">
+                            <p style="color: white">Clica "R" para recomeçar o jogo.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="gl-canvas" align="center">
+
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

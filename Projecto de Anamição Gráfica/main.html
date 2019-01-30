@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Megarunner</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- style -->
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+
+        }
+
+#title {
+    margin-left: 400px;
+}
+
+
+        canvas {
+            border: blue 8px solid;
+        }
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+
+    <!--Scripts-->
+    <script src="script\obstaculo.js"></script>
+    <script src="script\runner.js"></script>
+    <script src="script\main.js"></script>
+    <script src="script\Environment.js"></script>
+    <script src="script\GameOver.js"></script>
+
+</head>
+
+<body style="background-color: black">
+
+    <div class="container">
+        <div class="row">
+                <div class="col-2 mr-5 w-4"><img src="imagens\mega2.png" style="display:none" ></div>
+                <div class="col-8" id="title">
+                        <img src="imagens\mega2.png" >
+                    </div>
+            <div class="col-2"></div>
+            
+            
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-11 mr-1 ml-5">
+                <canvas id="myCanvas"></canvas>
+
+                <!--imagens para animação de corrida -->
+                <img src="animação\Run1.png" id="run1" style="display: none">
+                <img src="animação\Run2.png" id="run2" style="display: none">
+                <img src="animação\Run3.png" id="run3" style="display: none">
+                <img src="animação\Run4.png" id="run4" style="display: none">
+                <img src="animação\Run5.png" id="run5" style="display: none">
+                <img src="animação\Run6.png" id="run6" style="display: none">
+                <img src="animação\Run7.png" id="run7" style="display: none">
+                <img src="animação\Run8.png" id="run8" style="display: none">
+                <img src="animação\Run9.png" id="run9" style="display: none">
+                <img src="animação\Run10.png" id="run10" style="display: none">
+
+                <!--imagens para a animação de salto-->
+                <img src="animação\jump1.png" id="jum1" style="display: none">
+                <img src="animação\jump2.png" id="jum2" style="display: none">
+                <img src="animação\jump3.png" id="jum3" style="display: none">
+                <img src="animação\jump4.png" id="jum4" style="display: none">
+                <img src="animação\jump5.png" id="jum5" style="display: none">
+
+                <!--imagens para a animação de slide-->
+                <img src="animação\slide1.png" id="slid1" style="display: none">
+                <img src="animação\slide2.png" id="slid2" style="display: none">
+                <img src="animação\slide3.png" id="slid3" style="display: none">
+
+                <!--imagens para a animação da morte da personagem-->
+                <img src="animação\death1.png" id="end1" style="display: none">
+                <img src="animação\death2.png" id="end2" style="display: none">
+                <img src="animação\death3.png" id="end3" style="display: none">
+                <img src="animação\death4.png" id="end4" style="display: none">
+                <img src="animação\death5.png" id="end5" style="display: none">
+                <img src="animação\death6.png" id="end6" style="display: none">
+                <img src="animação\death7.png" id="end7" style="display: none">
+                <img src="animação\death8.png" id="end8" style="display: none">
+                <img src="animação\death9.png" id="end9" style="display: none">
+                <img src="animação\death10.png" id="end10" style="display: none">
+                <img src="animação\death11.png" id="end11" style="display: none">
+                <img src="animação\death12.png" id="end12" style="display: none">
+                <!--imagens para a animação da morte da personagem por falhar o slide-->
+                <img src="animação\deathBySlide1.png" id="slEnd1" style="display: none">
+                <img src="animação\deathBySlide2.png" id="slEnd2" style="display: none">
+                <img src="animação\deathBySlide3.png" id="slEnd3" style="display: none">
+                <img src="animação\deathBySlide4.png" id="slEnd4" style="display: none">
+                <img src="animação\deathBySlide5.png" id="slEnd5" style="display: none">
+                <img src="animação\deathBySlide6.png" id="slEnd6" style="display: none">
+                <img src="animação\deathBySlide7.png" id="slEnd7" style="display: none">
+                <img src="animação\deathBySlide8.png" id="slEnd8" style="display: none">
+                <img src="animação\deathBySlide9.png" id="slEnd9" style="display: none">
+                <img src="animação\deathBySlide10.png" id="slEnd10" style="display: none">
+                <img src="animação\deathBySlide11.png" id="slEnd11" style="display: none">
+
+                <!--imagens para o background e obstaculos-->
+                <img src="imagens\BGxl.png" id="street" style="display: none" width="1024px" height="504">
+                <img src="imagens\obstaculos.png" id="barreira" style="display: none">
+
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
